@@ -249,28 +249,3 @@ http://<EC2-PUBLIC-IP>
 
 ---
 
-## 💰 Cost Considerations
-
-* Uses AWS Free Tier (`t2.micro`)
-* GitHub Actions free minutes
-* No paid AWS services used
-
-Stop EC2 when not in use to avoid charges.
-
----
-
-## 🧠 Key Learnings
-
-* IAM user & secure credential management
-* GitHub Actions CI/CD pipelines
-* Docker-based deployments
-* AWS EC2 automation
-* Production-style DevOps workflow
-
----
-
-## 👨‍💻 Author
-
-DevOps Project by **[Your Name]**
-
----
