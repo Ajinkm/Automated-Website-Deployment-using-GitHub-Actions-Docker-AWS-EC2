@@ -20,11 +20,25 @@ jobs:
         username: ${{ secrets.EC2_USER }}
         key: ${{ secrets.EC2_KEY }}
         script: |
-          sudo yum install docker -y
-          sudo service docker start
-          sudo usermod -aG docker ec2-user
-          docker stop website || true
-          docker rm website || true
-          docker rmi website || true
-          docker build -t website .
-          docker run -d -p 80:80 --name website website
+          script: |
+            cd /home/ec2-user
+            sudo yum install git -y
+            
+            if [ ! -d "aws-devops-project" ]; then
+              git clone https://github.com/Ajinkm/aws-devops-project.git
+            fi
+          
+            cd YOUR-REPO
+            git pull
+          
+            sudo yum install docker -y
+            sudo systemctl start docker
+            sudo chmod 666 /var/run/docker.sock
+          
+            docker stop website || true
+            docker rm website || true
+            docker rmi website || true
+          
+            docker build -t website .
+            docker run -d -p 80:80 --name website website
+          
